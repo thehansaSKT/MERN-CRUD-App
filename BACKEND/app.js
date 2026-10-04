@@ -7,10 +7,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router =require("./Route/UserRouters");
 const app = express();
+const cors =require("cors");
 
 const PORT = process.env.PORT || 5005;
 
 app.use(express.json());
+app.use(cors());
 app.use("/users",router);
 
 
@@ -24,5 +26,5 @@ mongoose
         });
     })
     .catch((err) => {
-        console.log("MongoDB connection error:", err);
+        console.log("MongoDB connection error:", err.message);
     });

@@ -1,0 +1,76 @@
+.add-user-page {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+.add-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: min(100%, 28rem);
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 8%);
+}
+
+.add-user-form h1 {
+  margin: 0 0 0.75rem;
+  color: #222;
+}
+
+.add-user-form label {
+  color: #333;
+  font-weight: 600;
+}
+
+.add-user-form input,
+.add-user-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font: inherit;
+}
+
+.add-user-form input:focus,
+.add-user-form textarea:focus {
+  border-color: #333;
+  outline: 2px solid rgb(0 0 0 / 12%);
+}
+
+.add-user-form textarea {
+  resize: vertical;
+}
+
+.add-user-form button {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-user-form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.form-message {
+  margin: 0.4rem 0 0;
+}
+
+.form-success {
+  color: #176b35;
+}
+
+.form-error {
+  color: #b42318;
+}
