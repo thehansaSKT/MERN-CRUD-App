@@ -41,7 +41,7 @@ function Register() {
 
   const sendRequest = async () => {
     const response = await axios.post(
-      "http://localhost:5005/register",
+      `${process.env.REACT_APP_API_URL}/register`,
       {
         name: user.name,
         gmail: user.gmail,

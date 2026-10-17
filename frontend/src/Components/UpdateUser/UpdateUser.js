@@ -20,7 +20,7 @@ function UpdateUser() {
     const fetchHandler = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5005/users/${id}`
+          `${process.env.REACT_APP_API_URL}/users/${id}`
         );
 
         setInputs(res.data.users);

@@ -41,7 +41,7 @@ function AddUser() {
 
   const sendRequest = async () => {
     const response = await axios.post(
-      "http://localhost:5005/users",
+      `${process.env.REACT_APP_API_URL}/users`,
       {
         name: inputs.name,
         gmail: inputs.gmail,

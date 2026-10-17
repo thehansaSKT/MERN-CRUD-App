@@ -13,7 +13,7 @@ function User(props) {
     }
 
     try {
-      await axios.delete(`http://localhost:5005/users/${_id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/users/${_id}`);
       window.location.href = "/userdetails";
     } catch (error) {
       console.log(

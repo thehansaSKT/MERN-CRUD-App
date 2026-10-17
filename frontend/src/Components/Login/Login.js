@@ -45,7 +45,7 @@ function Login() {
 
   const sendRequest = async () => {
     const response = await axios.post(
-      "http://localhost:5005/login",
+      `${process.env.REACT_APP_API_URL}/login`,
       {
         gmail: user.gmail,
         password: user.password

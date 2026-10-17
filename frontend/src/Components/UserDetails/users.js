@@ -6,7 +6,7 @@ import User from '../Users/user';
 import { useReactToPrint } from 'react-to-print';
 import './users.css';
 
-const URL = "http://localhost:5005/users";
+const URL = `${process.env.REACT_APP_API_URL}/users`;
 
 const fetchHandler = async () => {
   const response = await axios.get(URL);
