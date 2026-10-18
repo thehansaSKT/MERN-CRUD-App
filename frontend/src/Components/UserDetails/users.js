@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import Nav from '../Nav/nav';
 import axios from 'axios';
@@ -18,9 +19,7 @@ const fetchHandler = async (retries = 2) => {
     console.error('Fetch users error:', error.message);
 
     if (retries > 0) {
-      console.log(
-        `Retrying request... ${retries} attempt(s) left`
-      );
+      console.log(`Retrying request... ${retries} attempt(s) left`);
 
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -50,7 +49,6 @@ function Users() {
       setUsers(data.users || []);
     } catch (err) {
       console.error('Unable to load users:', err);
-
       setError(
         'Unable to load users. Please check your connection and try again.'
       );
@@ -68,7 +66,6 @@ function Users() {
 
     setLoading(true);
     setError('');
-    setNoResults(false);
 
     try {
       const data = await fetchHandler();
@@ -76,14 +73,9 @@ function Users() {
       const query = searchQuery.trim().toLowerCase();
 
       const filteredUsers = allUsers.filter((user) =>
-        [
-          user.name,
-          user.gmail,
-          user.age,
-          user.address,
-          user._id,
-        ].some((field) =>
-          String(field ?? '').toLowerCase().includes(query)
+        [user.name, user.gmail, user.age, user.address, user._id].some(
+          (field) =>
+            String(field ?? '').toLowerCase().includes(query)
         )
       );
 
@@ -105,8 +97,7 @@ function Users() {
   const handlePrint = useReactToPrint({
     contentRef: ComponentsRef,
     documentTitle: 'Users Report',
-    onAfterPrint: () =>
-      alert('Users Report printed successfully'),
+    onAfterPrint: () => alert('Users Report printed successfully'),
   });
 
   return (
@@ -121,15 +112,11 @@ function Users() {
           </div>
 
           <span className="users-count">
-            {users.length}{' '}
-            {users.length === 1 ? 'User' : 'Users'}
+            {users.length} {users.length === 1 ? 'User' : 'Users'}
           </span>
         </div>
 
-        <form
-          className="user-search"
-          onSubmit={handleSearchChange}
-        >
+        <form className="user-search" onSubmit={handleSearchChange}>
           <div className="search-input-wrapper">
             <span className="search-icon" aria-hidden="true">
               ⌕
@@ -138,19 +125,13 @@ function Users() {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) =>
-                setSearchQuery(e.target.value)
-              }
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, email, age, or address..."
               aria-label="Search users"
             />
           </div>
 
-          <button
-            type="submit"
-            className="search-btn"
-            disabled={loading}
-          >
+          <button type="submit" className="search-btn" disabled={loading}>
             Search
           </button>
 
@@ -166,57 +147,35 @@ function Users() {
           )}
         </form>
 
-        {}
         {loading && (
           <div className="users-loading">
             <p>Loading users... Please wait.</p>
           </div>
         )}
 
-        {}
         {!loading && error && (
           <div className="users-error">
             <p>{error}</p>
-
-            <button
-              type="button"
-              onClick={loadUsers}
-              disabled={loading}
-            >
-              Retry
+            <button type="button" onClick={loadUsers}>
+              Try Again
             </button>
           </div>
         )}
 
-        {}
         {!loading && !error && noResults && (
           <div className="no-results">
             <h2>No users found</h2>
-            <p>
-              Try another name, email, age, or address.
-            </p>
-
-            <button
-              type="button"
-              onClick={handleReset}
-              disabled={loading}
-            >
+            <p>Try another name, email, age, or address.</p>
+            <button type="button" onClick={handleReset}>
               Show All Users
             </button>
           </div>
         )}
 
-        {}
         {!loading && !error && !noResults && (
-          <div
-            className="users-grid"
-            ref={ComponentsRef}
-          >
+          <div className="users-grid" ref={ComponentsRef}>
             {users.map((user) => (
-              <User
-                key={user._id}
-                user={user}
-              />
+              <User key={user._id} user={user} />
             ))}
 
             {users.length === 0 && (
@@ -225,7 +184,6 @@ function Users() {
           </div>
         )}
 
-        {}
         <div className="report-actions">
           <button
             type="button"
